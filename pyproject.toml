@@ -1,0 +1,57 @@
+[project]
+name = "linkedin-jobs-agent"
+version = "0.1.0"
+description = "LinkedIn Jobs Research AI Agent using OpenAI Agents SDK"
+requires-python = ">=3.11"
+readme = "README.md"
+
+dependencies = [
+    # OpenAI Agents SDK (primary framework)
+    "openai-agents>=0.0.9",
+    "openai>=1.30.0",
+    # Browser automation
+    "playwright>=1.44.0",
+    "playwright-stealth>=1.0.6",
+    # Data parsing & processing
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.2.0",
+    "pydantic>=2.7.0",
+    # Data manipulation & export
+    "pandas>=2.2.0",
+    "python-dateutil>=2.9.0",
+    # Visualization
+    "matplotlib>=3.9.0",
+    "plotly>=5.22.0",
+    "kaleido>=0.2.1",
+    # HTTP & networking
+    "httpx>=0.27.0",
+    "tenacity>=8.3.0",
+    "fake-useragent>=1.5.0",
+    # Console UI
+    "rich>=13.7.0",
+    # Configuration
+    "pyyaml>=6.0.1",
+    # SerpAPI fallback
+    "google-search-results>=2.4.2",
+    # Templates
+    "jinja2>=3.1.4",
+    "markdown>=3.10.2",
+]
+
+[project.scripts]
+linkedin-agent = "main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.2.0",
+    "pytest-asyncio>=0.23.0",
+    "black>=24.4.0",
+    "ruff>=0.4.0",
+]

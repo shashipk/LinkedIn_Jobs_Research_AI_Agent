@@ -1,0 +1,137 @@
+# LinkedIn Jobs Research Agent Configuration
+
+# ─────────────────────────────────────────────
+# DATA SOURCE SETTINGS
+# ─────────────────────────────────────────────
+data_source:
+  # Toggle: "playwright" (default) or "serpapi"
+  mode: "serpapi"
+
+  # SerpAPI settings (used if mode = "serpapi")
+  serpapi:
+    api_key: "PASTE_YOUR_SERPAPI_KEY_HERE"   # or set SERPAPI_API_KEY env var
+    engine: "google_jobs"
+
+    # ── HOW MANY JOBS TO COLLECT ──────────────────────────────────────
+    # Each page = 1 API credit = ~10 jobs
+    # Formula: roles × locations × pages_per_query = total credits used
+    #
+    #  pages_per_query: 1  →  ~245  jobs  (26 credits)    ← free plan safe
+    #  pages_per_query: 3  →  ~600  jobs  (78 credits)    ← free plan limit ~
+    #  pages_per_query: 5  →  ~900  jobs  (130 credits)   ← needs paid plan
+    #  pages_per_query: 10 →  ~1500 jobs  (260 credits)   ← paid plan
+    #
+    # Free plan = 100 searches/month  |  Paid = $50/mo for 5,000 searches
+    pages_per_query: 500   # ← change this to get more jobs
+
+# ─────────────────────────────────────────────
+# SCRAPER SETTINGS  (Playwright mode)
+# ─────────────────────────────────────────────
+scraper:
+  min_delay: 2.0
+  max_delay: 5.0
+  max_pages: 5
+  max_jobs_per_query: 50
+  max_retries: 3
+  backoff_factor: 2.0
+  headless: true
+  browser: "chromium"
+  linkedin_url_template: "https://www.linkedin.com/jobs/search/?keywords={keywords}&location={location}&f_TPR=r{seconds}&start={start}"
+  time_range_seconds: 63072000
+
+# ─────────────────────────────────────────────
+# SEARCH QUERIES
+# ─────────────────────────────────────────────
+search:
+  roles:
+    - "Software Engineer"
+    - "Backend Engineer"
+    - "Frontend Engineer"
+    - "Full Stack Engineer"
+    - "Machine Learning Engineer"
+    - "AI Engineer"
+    - "Data Engineer"
+    - "Data Scientist"
+    - "DevOps Engineer"
+    - "Platform Engineer"
+    - "Site Reliability Engineer"
+    - "Engineering Manager"
+    - "Tech Lead"
+
+  # ── LOCATIONS ────────────────────────────────────────────────────────
+  # OPTION A — Country-level (fewer queries, broad results)
+  # Use this with pages_per_query: 5-10 to get more depth per country
+  #
+  # OPTION B — City-level (more queries, more diverse results)
+  # Uncomment the city list below for 1000+ unique jobs.
+  # Each city = separate query set → more unique postings, more API credits.
+  #
+  # Credit math for city mode:
+  #   13 roles × 10 cities × 3 pages = 390 credits  (needs paid plan)
+  #   13 roles × 10 cities × 1 page  = 130 credits  (slightly over free plan)
+
+  locations:
+    # ── OPTION A: Country-level (DEFAULT — works on free plan) ────────
+    - name: "United States"
+      code: "us"
+    - name: "India"
+      code: "in"
+
+    # ── OPTION B: City-level (UNCOMMENT for 1000+ diverse jobs) ───────
+    # US cities
+    - name: "San Francisco, California"
+      code: "us-sf"
+    - name: "New York, New York"
+      code: "us-ny"
+    - name: "Seattle, Washington"
+      code: "us-sea"
+    # - name: "Austin, Texas"
+    #   code: "us-atx"
+    # - name: "Boston, Massachusetts"
+    #   code: "us-bos"
+    # - name: "Chicago, Illinois"
+    #   code: "us-chi"
+    # - name: "Los Angeles, California"
+    #   code: "us-la"
+    # India cities
+    - name: "Bengaluru, Karnataka, India"
+      code: "in-blr"
+    - name: "Hyderabad, Telangana, India"
+      code: "in-hyd"
+    # - name: "Mumbai, Maharashtra, India"
+    #   code: "in-mum"
+    # - name: "Pune, Maharashtra, India"
+    #   code: "in-pun"
+    # - name: "Delhi, India"
+    #   code: "in-del"
+    # - name: "Chennai, Tamil Nadu, India"
+    #   code: "in-che"
+
+  date_range_months: 24
+
+# ─────────────────────────────────────────────
+# OPENAI SETTINGS
+# ─────────────────────────────────────────────
+openai:
+  model: "gpt-4o-mini"
+  analyst_model: "gpt-4o-mini"
+  temperature: 0.2
+  max_tokens: 65,536
+
+# ─────────────────────────────────────────────
+# OUTPUT SETTINGS
+# ─────────────────────────────────────────────
+output:
+  directory: "output"
+  report_filename: "linkedin_jobs_report.md"
+  json_filename: "jobs_data.json"
+  csv_filename: "jobs_data.csv"
+  charts_directory: "output/charts"
+
+# ─────────────────────────────────────────────
+# LOGGING
+# ─────────────────────────────────────────────
+logging:
+  level: "INFO"
+  show_progress: true
+  log_file: "output/agent.log"
