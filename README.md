@@ -12,6 +12,7 @@
 ## 📋 Table of Contents
 
 - [What It Does](#-what-it-does)
+- [Sample Output](#-sample-output)
 - [Pipeline Architecture](#-pipeline-architecture)
 - [Project Structure](#-project-structure)
 - [Prerequisites](#-prerequisites)
@@ -43,6 +44,34 @@ This agent automatically:
 - Compare US vs India job markets
 - Track hiring trends over the last 24 months
 - Research before a job search or career pivot
+
+---
+
+## 📂 Sample Output
+
+Don't want to run the agent just yet? Browse the pre-generated results in the [`sample_output/`](./sample_output/) folder:
+
+| File | Preview |
+|---|---|
+| 📄 [`linkedin_jobs_report.md`](./sample_output/linkedin_jobs_report.md) | Full research report (~1,574 real jobs, US + India) |
+| 📊 [`jobs_data.csv`](./sample_output/jobs_data.csv) | Open in Excel / Google Sheets |
+| 🗂 [`jobs_data.json`](./sample_output/jobs_data.json) | Structured JSON for all job postings |
+
+**Sample Charts:**
+
+| Role Demand | Top Skills |
+|---|---|
+| ![Role Demand](./sample_output/charts/role_demand.png) | ![Top Skills](./sample_output/charts/top_skills.png) |
+
+| Experience Distribution | Work Type |
+|---|---|
+| ![Experience](./sample_output/charts/experience_distribution.png) | ![Work Type](./sample_output/charts/work_type_distribution.png) |
+
+| Quarterly Trends | Region Split |
+|---|---|
+| ![Trends](./sample_output/charts/quarterly_trends.png) | ![Region](./sample_output/charts/region_split.png) |
+
+> 📌 This sample was generated on 2026-02-25 using SerpAPI mode. Clone the repo and run the agent to get a fresh report with today's live data.
 
 ---
 
