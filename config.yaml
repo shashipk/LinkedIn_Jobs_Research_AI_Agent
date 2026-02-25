@@ -22,7 +22,7 @@ data_source:
     #  pages_per_query: 10 →  ~1500 jobs  (260 credits)   ← paid plan
     #
     # Free plan = 100 searches/month  |  Paid = $50/mo for 5,000 searches
-    pages_per_query: 500   # ← change this to get more jobs
+    pages_per_query: 1000   # ← change this to get more jobs
 
 # ─────────────────────────────────────────────
 # SCRAPER SETTINGS  (Playwright mode)
@@ -85,14 +85,14 @@ search:
       code: "us-ny"
     - name: "Seattle, Washington"
       code: "us-sea"
-    # - name: "Austin, Texas"
-    #   code: "us-atx"
-    # - name: "Boston, Massachusetts"
-    #   code: "us-bos"
+    - name: "Austin, Texas"
+      code: "us-atx"
+    - name: "Boston, Massachusetts"
+      code: "us-bos"
     # - name: "Chicago, Illinois"
     #   code: "us-chi"
-    # - name: "Los Angeles, California"
-    #   code: "us-la"
+    - name: "Los Angeles, California"
+      code: "us-la"
     # India cities
     - name: "Bengaluru, Karnataka, India"
       code: "in-blr"
@@ -100,10 +100,10 @@ search:
       code: "in-hyd"
     # - name: "Mumbai, Maharashtra, India"
     #   code: "in-mum"
-    # - name: "Pune, Maharashtra, India"
-    #   code: "in-pun"
-    # - name: "Delhi, India"
-    #   code: "in-del"
+    - name: "Pune, Maharashtra, India"
+      code: "in-pun"
+    - name: "Delhi, India"
+      code: "in-del"
     # - name: "Chennai, Tamil Nadu, India"
     #   code: "in-che"
 
@@ -116,7 +116,7 @@ openai:
   model: "gpt-4o-mini"
   analyst_model: "gpt-4o-mini"
   temperature: 0.2
-  max_tokens: 65,536
+  max_tokens: 524,288
 
 # ─────────────────────────────────────────────
 # OUTPUT SETTINGS

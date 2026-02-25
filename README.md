@@ -53,7 +53,7 @@ Don't want to run the agent just yet? Browse the pre-generated results in the [`
 
 | File | Preview |
 |---|---|
-| 📄 [`linkedin_jobs_report.md`](./sample_output/linkedin_jobs_report.md) | Full research report (~1,574 real jobs, US + India) |
+| 📄 [`linkedin_jobs_report.md`](./sample_output/linkedin_jobs_report.md) | Full research report (~2,465 real jobs, US + India) |
 | 📊 [`jobs_data.csv`](./sample_output/jobs_data.csv) | Open in Excel / Google Sheets |
 | 🗂 [`jobs_data.json`](./sample_output/jobs_data.json) | Structured JSON for all job postings |
 
@@ -71,7 +71,7 @@ Don't want to run the agent just yet? Browse the pre-generated results in the [`
 |---|---|
 | ![Trends](./sample_output/charts/quarterly_trends.png) | ![Region](./sample_output/charts/region_split.png) |
 
-> 📌 This sample was generated on 2026-02-25 using SerpAPI mode. Clone the repo and run the agent to get a fresh report with today's live data.
+> 📌 This sample was generated on 2026-02-25 using SerpAPI mode with **2,465 real job postings**. Clone the repo and run the agent to get a fresh report with today's live data.
 
 ---
 
