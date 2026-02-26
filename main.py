@@ -417,8 +417,17 @@ def main() -> None:
         config.setdefault("data_source", {})["mode"] = args.mode
 
     if args.output:
+        # Explicit --output flag always wins
         config.setdefault("output", {})["directory"] = args.output
         config["output"]["charts_directory"] = os.path.join(args.output, "charts")
+    elif config.get("output", {}).get("timestamped_output", False):
+        # Auto-generate timestamped folder: output/YYYY-MM/DD_HH-MM/
+        now = datetime.now()
+        base = config.get("output", {}).get("directory", "output")
+        ts_dir = os.path.join(base, now.strftime("%Y-%m"), now.strftime("%d_%H-%M"))
+        config["output"]["directory"] = ts_dir
+        config["output"]["charts_directory"] = os.path.join(ts_dir, "charts")
+        console.print(f"[dim]Output directory: {ts_dir}[/dim]")
 
     if args.headless is not None:
         config.setdefault("scraper", {})["headless"] = args.headless

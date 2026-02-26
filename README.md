@@ -53,7 +53,7 @@ Don't want to run the agent just yet? Browse the pre-generated results in the [`
 
 | File | Preview |
 |---|---|
-| 📄 [`linkedin_jobs_report.md`](./sample_output/linkedin_jobs_report.md) | Full research report (~2,465 real jobs, US + India) |
+| 📄 [`linkedin_jobs_report.md`](./sample_output/linkedin_jobs_report.md) | Full research report (~6,329 real jobs, US + India, with AI/ML adoption analysis) |
 | 📊 [`jobs_data.csv`](./sample_output/jobs_data.csv) | Open in Excel / Google Sheets |
 | 🗂 [`jobs_data.json`](./sample_output/jobs_data.json) | Structured JSON for all job postings |
 
@@ -71,7 +71,11 @@ Don't want to run the agent just yet? Browse the pre-generated results in the [`
 |---|---|
 | ![Trends](./sample_output/charts/quarterly_trends.png) | ![Region](./sample_output/charts/region_split.png) |
 
-> 📌 This sample was generated on 2026-02-25 using SerpAPI mode with **2,465 real job postings**. Clone the repo and run the agent to get a fresh report with today's live data.
+| AI/ML Knowledge Expected by Role | |
+|---|---|
+| ![AI Mention](./sample_output/charts/ai_mention_by_role.png) | *New: which roles are expecting AI/ML skills — even outside core AI/ML titles* |
+
+> 📌 This sample was generated on 2026-02-26 using SerpAPI mode with **6,329 real job postings**. Clone the repo and run the agent to get a fresh report with today's live data.
 
 ---
 
@@ -175,8 +179,8 @@ uv --version
 ### Step 2 — Clone the repository
 
 ```bash
-git clone https://github.com/shashipk/linkedin-jobs-agent.git
-cd linkedin-jobs-agent
+git clone https://github.com/shashipk/LinkedIn_Jobs_Research_AI_Agent.git
+cd LinkedIn_Jobs_Research_AI_Agent
 ```
 
 ---
@@ -266,47 +270,87 @@ data_source:
   mode: "serpapi"      # "serpapi" (recommended) or "playwright"
   serpapi:
     api_key: "PASTE_YOUR_SERPAPI_KEY_HERE"  # or use SERPAPI_API_KEY env var
-    pages_per_query: 3  # Each page ≈ 10 jobs, costs 1 API credit
+    pages_per_query: 1000  # "unlimited" — fetches all available pages per query
 ```
 
 **How many jobs will I get?**
 
-| `pages_per_query` | Approx. Jobs | API Credits Used | Plan Needed |
-|---|---|---|---|
-| `1` | ~245 jobs | ~26 credits | Free plan ✅ |
-| `3` | ~600 jobs | ~78 credits | Free plan ✅ |
-| `5` | ~900 jobs | ~130 credits | Free plan limit ⚠️ |
-| `10` | ~1,500 jobs | ~260 credits | Paid plan ($50/mo) |
+> 💡 `pages_per_query: 1000` means **"fetch everything available"** — Google Jobs typically caps at 10–30 pages per query, so it won't actually burn 1,000 credits. It just keeps paginating until results run out.
+>
+> The real lever for getting more jobs is adding more **roles** and **locations** — not `pages_per_query`.
 
-> Formula: `roles × locations × pages_per_query = total credits`
+| Roles | Locations | Est. Unique Jobs | Credits Used | Plan Needed |
+|---|---|---|---|---|
+| 13 | 2 (country-only) | ~500 | ~26 | Free plan ✅ |
+| 13 | 12 (cities) | ~2,465 | ~400 | Paid plan |
+| **21** | **18 (default)** | **~5,000+** | **~600** | **Paid plan** |
+| 21 | 25+ | ~8,000+ | ~900+ | Paid plan |
+
+> Formula: `roles × locations × actual_pages_available ≈ total credits`
 
 ---
 
 #### Job Roles to Search
+21 roles are configured by default, covering the full spectrum of tech jobs:
 ```yaml
 search:
   roles:
+    # Software Engineering
     - "Software Engineer"
+    - "Backend Engineer"
+    - "Frontend Engineer"
+    - "Full Stack Engineer"
+    - "Staff Engineer"
+    - "iOS Engineer"
+    - "Android Engineer"
+    # AI / Data
     - "Machine Learning Engineer"
+    - "AI Engineer"
+    - "Data Engineer"
     - "Data Scientist"
+    # Infrastructure / Cloud
     - "DevOps Engineer"
-    # Add or remove roles as needed
+    - "Platform Engineer"
+    - "Site Reliability Engineer"
+    - "Cloud Engineer"
+    - "Infrastructure Engineer"
+    # Security & Architecture
+    - "Security Engineer"
+    - "Solutions Architect"
+    # Leadership & Quality
+    - "Engineering Manager"
+    - "Tech Lead"
+    - "QA Engineer"
 ```
 
 ---
 
 #### Locations
+18 locations are configured by default — 9 US cities, 7 India cities, plus country-level fallbacks:
 ```yaml
 search:
   locations:
-    # Country-level (works on free plan)
+    # Country-level (broad fallback)
     - name: "United States"
     - name: "India"
-
-    # City-level (uncomment for more diverse results — uses more credits)
-    # - name: "San Francisco, California"
-    # - name: "New York, New York"
-    # - name: "Bengaluru, Karnataka, India"
+    # US Cities
+    - name: "San Francisco, California"
+    - name: "New York, New York"
+    - name: "Seattle, Washington"
+    - name: "Austin, Texas"
+    - name: "Boston, Massachusetts"
+    - name: "Chicago, Illinois"
+    - name: "Los Angeles, California"
+    - name: "Denver, Colorado"
+    - name: "Atlanta, Georgia"
+    # India Cities
+    - name: "Bengaluru, Karnataka, India"
+    - name: "Hyderabad, Telangana, India"
+    - name: "Mumbai, Maharashtra, India"
+    - name: "Pune, Maharashtra, India"
+    - name: "Delhi, India"
+    - name: "Chennai, Tamil Nadu, India"
+    - name: "Noida, Uttar Pradesh, India"
 ```
 
 ---

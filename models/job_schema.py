@@ -26,6 +26,8 @@ class RoleCategory(str, Enum):
     DEVOPS = "DevOps/Platform/SRE"
     ENGINEERING_MANAGER = "Engineering Manager/Tech Lead"
     SOFTWARE_ENGINEER = "Software Engineer"
+    FORWARD_DEPLOYED_ENGINEER = "Forward Deployed Engineer"   # FDE, Solutions Engineer, Field Engineer
+    PRODUCT_PROGRAM_MANAGEMENT = "Product/Program Management" # Tech PM, AI PM, TPM, Tech Program Manager
     OTHER = "Other"
 
 
@@ -87,6 +89,9 @@ class JobPosting(BaseModel):
     scraped_at: datetime = Field(default_factory=datetime.utcnow)
     search_query: Optional[str] = None
     search_location: Optional[str] = None
+    # ── AI/ML mention detection ──────────────────────────────────────
+    has_ai_mention: bool = False                              # True if any AI/ML keyword found
+    ai_keywords_found: List[str] = Field(default_factory=list)  # e.g. ["LLM", "RAG", "embeddings"]
 
     @field_validator("required_skills", mode="before")
     @classmethod
@@ -112,6 +117,7 @@ class JobPosting(BaseModel):
         d["work_type"] = self.work_type.value
         d["employment_type"] = self.employment_type.value
         d["region"] = self.region.value
+        d["ai_keywords_found"] = ", ".join(self.ai_keywords_found)
         return d
 
 
@@ -219,6 +225,7 @@ class AnalysisResult(BaseModel):
     employment_type_distribution: Dict[str, int] = Field(default_factory=dict)
     top_companies: List[CompanyStats] = Field(default_factory=list)
     insights: List[str] = Field(default_factory=list)
+    ai_mention_by_role: Dict[str, float] = Field(default_factory=dict)  # role → % of jobs mentioning AI/ML
     generated_at: datetime = Field(default_factory=datetime.utcnow)
 
 

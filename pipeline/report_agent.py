@@ -166,7 +166,8 @@ def _build_markdown_report(
         "6. [Work Mode Distribution](#6-work-mode-distribution)\n",
         "7. [Top Hiring Companies](#7-top-hiring-companies)\n",
         "8. [Quarterly Trends](#8-quarterly-trends)\n",
-        "9. [Observations & Insights](#9-observations--insights)\n",
+        "9. [AI/ML Knowledge Expected by Role](#9-aiml-knowledge-expected-by-role)\n",
+        "10. [Observations & Insights](#10-observations--insights)\n",
         "\n---\n",
     ]
 
@@ -339,9 +340,49 @@ def _build_markdown_report(
 
     lines.append("\n---\n")
 
-    # ── 9. Insights
+    # ── 9. AI/ML Mention by Role
     lines += [
-        "## 9. Observations & Insights\n\n",
+        "## 9. AI/ML Knowledge Expected by Role\n\n",
+        "> Which roles are expecting AI/ML knowledge — even outside core AI/ML job titles?\n\n",
+        chart_embed("ai_mention_by_role.png"),
+        "\n",
+        "| Role Category | Jobs Analyzed | AI/ML Mentions | % Adoption |\n",
+        "|---------------|----------:|----------:|----------:|\n",
+    ]
+
+    if analysis.ai_mention_by_role:
+        # Get total count per role from role_stats for the table
+        role_totals = {rs.category: rs.total_count for rs in analysis.role_stats}
+
+        sorted_ai = sorted(
+            analysis.ai_mention_by_role.items(),
+            key=lambda x: x[1], reverse=True,
+        )
+        for role, pct in sorted_ai:
+            total_c = role_totals.get(role, 0)
+            ai_count = round(total_c * pct / 100)
+            bar = "🟩" * min(int(pct / 10), 10)
+            lines.append(f"| {role} | {total_c:,} | ~{ai_count:,} | {bar} {pct}% |\n")
+
+        # Highlight top finding
+        top_role, top_pct = sorted_ai[0]
+        lines.append(
+            f"\n> 💡 **{top_role}** has the highest AI/ML adoption signal at **{top_pct}%** "
+            f"of job postings — meaning employers already expect AI familiarity even in this role.\n"
+        )
+    else:
+        lines.append("*AI/ML mention data not available for this run.*\n")
+
+    lines.append("\n**Keywords detected:** `AI` · `ML` · `LLM` · `GenAI` · `Generative AI` · "
+                 "`Machine Learning` · `Deep Learning` · `Neural Network` · `RAG` · "
+                 "`Agents` · `AI Agents` · `Foundation Model` · `Prompt` · "
+                 "`Vector Database` · `Embeddings`\n")
+
+    lines.append("\n---\n")
+
+    # ── 10. Insights
+    lines += [
+        "## 10. Observations & Insights\n\n",
     ]
 
     if analysis.insights:

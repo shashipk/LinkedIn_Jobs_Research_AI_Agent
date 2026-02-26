@@ -352,6 +352,72 @@ def chart_region_split(
 
 
 # ─────────────────────────────────────────────
+# CHART: AI/ML MENTION RATE BY ROLE
+# ─────────────────────────────────────────────
+
+def chart_ai_mention_by_role(
+    ai_mention_by_role: Dict[str, float],
+    output_dir: str,
+    filename: str = "ai_mention_by_role.png",
+) -> Optional[str]:
+    """Horizontal bar chart showing % of jobs mentioning AI/ML keywords per role category."""
+    plt, mticker = _setup_matplotlib()
+
+    if not ai_mention_by_role:
+        console.print("[yellow]No AI mention data for chart[/yellow]")
+        return None
+
+    # Sort by % descending
+    sorted_data = sorted(ai_mention_by_role.items(), key=lambda x: x[1])
+    roles = [r for r, _ in sorted_data]
+    pcts  = [p for _, p in sorted_data]
+
+    # Colour bars by intensity: darker = higher AI adoption
+    max_pct = max(pcts) if pcts else 1
+    bar_colors = [
+        f"#{int(37 + (198 - 37) * (1 - p / max_pct)):02x}"
+        f"{int(99 + (37 - 99) * (1 - p / max_pct)):02x}"
+        f"{int(235 + (98 - 235) * (1 - p / max_pct)):02x}"
+        for p in pcts
+    ]
+
+    fig, ax = plt.subplots(figsize=(12, max(6, len(roles) * 0.55)))
+
+    bars = ax.barh(roles, pcts, color=bar_colors, alpha=0.88, height=0.65)
+
+    ax.set_xlabel("% of Job Postings Mentioning AI/ML", fontsize=12)
+    ax.set_title(
+        "🤖 AI/ML Knowledge Expected by Role\n"
+        "(% of JDs mentioning AI, ML, LLM, GenAI, RAG, Agents, Embeddings, etc.)",
+        fontsize=13, fontweight="bold", pad=14,
+    )
+    ax.set_xlim(0, min(max_pct * 1.18, 100))
+    ax.xaxis.set_major_formatter(mticker.FuncFormatter(lambda v, _: f"{v:.0f}%"))
+
+    # Value labels at end of each bar
+    for bar, pct in zip(bars, pcts):
+        ax.text(
+            bar.get_width() + max_pct * 0.012,
+            bar.get_y() + bar.get_height() / 2,
+            f"{pct:.1f}%",
+            va="center", ha="left",
+            fontsize=9, fontweight="bold",
+        )
+
+    # Reference line at 50%
+    if max_pct > 50:
+        ax.axvline(50, color="#DC2626", linewidth=0.8, linestyle="--", alpha=0.5, label="50% mark")
+        ax.legend(fontsize=9)
+
+    fig.tight_layout()
+    output_path = os.path.join(output_dir, filename)
+    fig.savefig(output_path, bbox_inches="tight")
+    plt.close(fig)
+    console.print(f"[green]Chart saved:[/green] {output_path}")
+    return output_path
+
+
+# ─────────────────────────────────────────────
 # BATCH CHART GENERATOR
 # ─────────────────────────────────────────────
 
@@ -421,5 +487,14 @@ def generate_all_charts(analysis: dict, output_dir: str) -> List[str]:
             generated.append(path)
     except Exception as e:
         console.print(f"[red]region_split chart error: {e}[/red]")
+
+    try:
+        ai_data = analysis.get("ai_mention_by_role", {})
+        if ai_data:
+            path = chart_ai_mention_by_role(ai_data, output_dir)
+            if path:
+                generated.append(path)
+    except Exception as e:
+        console.print(f"[red]ai_mention_by_role chart error: {e}[/red]")
 
     return generated

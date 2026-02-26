@@ -14,15 +14,18 @@ data_source:
 
     # ── HOW MANY JOBS TO COLLECT ──────────────────────────────────────
     # Each page = 1 API credit = ~10 jobs
-    # Formula: roles × locations × pages_per_query = total credits used
+    # Formula: roles × locations × actual_pages_available = total credits
     #
-    #  pages_per_query: 1  →  ~245  jobs  (26 credits)    ← free plan safe
-    #  pages_per_query: 3  →  ~600  jobs  (78 credits)    ← free plan limit ~
-    #  pages_per_query: 5  →  ~900  jobs  (130 credits)   ← needs paid plan
-    #  pages_per_query: 10 →  ~1500 jobs  (260 credits)   ← paid plan
+    # Note: Google Jobs rarely has more than 10-30 pages per query.
+    # Setting pages_per_query: 1000 means "fetch ALL available pages"
+    # — it won't actually burn 1000 credits, it stops when results run out.
+    #
+    # Jobs estimate with DEFAULT config (21 roles × 13 locations):
+    #   pages_per_query: 1    →  ~1,500  jobs  ~10 min  ← free plan safe (~100 credits)
+    #   pages_per_query: 1000 →  ~5,000+ jobs  ~10 min  ← fetches everything available
     #
     # Free plan = 100 searches/month  |  Paid = $50/mo for 5,000 searches
-    pages_per_query: 1000   # ← change this to get more jobs
+    pages_per_query: 1000   # "unlimited" — fetches all available pages per query
 
 # ─────────────────────────────────────────────
 # SCRAPER SETTINGS  (Playwright mode)
@@ -43,69 +46,118 @@ scraper:
 # SEARCH QUERIES
 # ─────────────────────────────────────────────
 search:
+
+  # ── ROLES ─────────────────────────────────────────────────────────────
+  # 30 roles covering the full spectrum of tech jobs (including new/emerging roles).
+  # Add or remove roles to focus your research.
   roles:
+    # Software Engineering
     - "Software Engineer"
     - "Backend Engineer"
     - "Frontend Engineer"
     - "Full Stack Engineer"
+    - "Staff Engineer"
+    - "iOS Engineer"
+    - "Android Engineer"
+
+    # AI / Data (core)
     - "Machine Learning Engineer"
     - "AI Engineer"
     - "Data Engineer"
     - "Data Scientist"
+
+    # AI / Data (new & emerging)
+    - "LLM Engineer"
+    - "Prompt Engineer"
+    - "MLOps Engineer"
+    - "AI Infrastructure Engineer"
+
+    # Infrastructure / Cloud
     - "DevOps Engineer"
     - "Platform Engineer"
     - "Site Reliability Engineer"
+    - "Cloud Engineer"
+    - "Infrastructure Engineer"
+
+    # Security
+    - "Security Engineer"
+
+    # Architecture & Leadership
+    - "Solutions Architect"
     - "Engineering Manager"
     - "Tech Lead"
 
+    # Quality
+    - "QA Engineer"
+
+    # Field / Customer-Facing Engineering (FDE family)
+    - "Forward Deployed Engineer"
+    - "Solutions Engineer"
+    - "Field Engineer"
+
+    # Product & Program Management
+    - "AI Product Manager"
+    - "Technical Product Manager"
+    - "Technical Program Manager"
+
   # ── LOCATIONS ────────────────────────────────────────────────────────
-  # OPTION A — Country-level (fewer queries, broad results)
-  # Use this with pages_per_query: 5-10 to get more depth per country
+  # 13 high-value city-level locations: 7 US + 6 India.
+  # Each location × role = 1 query set.
   #
-  # OPTION B — City-level (more queries, more diverse results)
-  # Uncomment the city list below for 1000+ unique jobs.
-  # Each city = separate query set → more unique postings, more API credits.
+  # WHY NO COUNTRY-LEVEL ("United States" / "India"):
+  #   Country-level searches return jobs from ALL cities, heavily duplicating
+  #   what the city searches already fetch. Removing them cuts ~30% of queries
+  #   with minimal loss of unique jobs — the deduplicator removes overlaps anyway.
   #
-  # Credit math for city mode:
-  #   13 roles × 10 cities × 3 pages = 390 credits  (needs paid plan)
-  #   13 roles × 10 cities × 1 page  = 130 credits  (slightly over free plan)
+  # SPEED vs COVERAGE trade-offs:
+  #   13 locations (default) → ~10-12 min → ~5,000+ jobs   ← best balance ✅
+  #   18 locations            → ~15-20 min → ~6,000+ jobs   ← slow
+  #    2 locations (US + IN)  → ~3-4 min   → ~1,500  jobs   ← fastest / least data
+  #
+  # To add country-level back (broader but slower), uncomment:
+  #   - name: "United States"
+  #     code: "us"
+  #   - name: "India"
+  #     code: "in"
 
   locations:
-    # ── OPTION A: Country-level (DEFAULT — works on free plan) ────────
-    - name: "United States"
-      code: "us"
-    - name: "India"
-      code: "in"
-
-    # ── OPTION B: City-level (UNCOMMENT for 1000+ diverse jobs) ───────
-    # US cities
-    - name: "San Francisco, California"
+    # ── US Cities (7) — top tech hiring hubs ──────────────────────────
+    - name: "San Francisco, California"   # Silicon Valley / Bay Area
       code: "us-sf"
-    - name: "New York, New York"
+    - name: "New York, New York"          # Finance + tech
       code: "us-ny"
-    - name: "Seattle, Washington"
+    - name: "Seattle, Washington"         # Amazon, Microsoft
       code: "us-sea"
-    - name: "Austin, Texas"
+    - name: "Austin, Texas"               # Dell, Tesla, growing hub
       code: "us-atx"
-    - name: "Boston, Massachusetts"
+    - name: "Boston, Massachusetts"       # MIT ecosystem, biotech/tech
       code: "us-bos"
-    # - name: "Chicago, Illinois"
-    #   code: "us-chi"
-    - name: "Los Angeles, California"
+    - name: "Chicago, Illinois"           # Fintech, enterprise
+      code: "us-chi"
+    - name: "Los Angeles, California"     # Entertainment tech, gaming
       code: "us-la"
-    # India cities
-    - name: "Bengaluru, Karnataka, India"
+    # Uncomment to add more US cities (adds ~21 queries each):
+    # - name: "Denver, Colorado"
+    #   code: "us-den"
+    # - name: "Atlanta, Georgia"
+    #   code: "us-atl"
+
+    # ── India Cities (6) — top tech hiring hubs ───────────────────────
+    - name: "Bengaluru, Karnataka, India"   # India's Silicon Valley
       code: "in-blr"
-    - name: "Hyderabad, Telangana, India"
+    - name: "Hyderabad, Telangana, India"   # Microsoft, Google, Amazon India
       code: "in-hyd"
-    # - name: "Mumbai, Maharashtra, India"
-    #   code: "in-mum"
-    - name: "Pune, Maharashtra, India"
-      code: "in-pun"
-    - name: "Delhi, India"
+    - name: "Mumbai, Maharashtra, India"    # Fintech, media tech
+      code: "in-mum"
+    - name: "Delhi, India"                  # NCR: includes Gurgaon
       code: "in-del"
-    # - name: "Chennai, Tamil Nadu, India"
-    #   code: "in-che"
+    - name: "Pune, Maharashtra, India"      # IT hub, distinct from Mumbai
+      code: "in-pun"
+    - name: "Chennai, Tamil Nadu, India"    # Automotive tech, IT services
+      code: "in-che"
+    # Uncomment to add more India cities (adds ~21 queries each):
+    # - name: "Noida, Uttar Pradesh, India"  # Delhi NCR suburb, overlaps with Delhi
+    #   code: "in-noi"
 
   date_range_months: 24
 
@@ -116,13 +168,26 @@ openai:
   model: "gpt-4o-mini"
   analyst_model: "gpt-4o-mini"
   temperature: 0.2
-  max_tokens: 524,288
+  max_tokens: 524288
 
 # ─────────────────────────────────────────────
 # OUTPUT SETTINGS
 # ─────────────────────────────────────────────
 output:
   directory: "output"
+
+  # ── TIMESTAMPED OUTPUT ───────────────────────────────────────────────
+  # If true, each run is saved to a unique folder:
+  #   output/YYYY-MM/DD_HH-MM/
+  # Example:
+  #   output/2026-03/25_08-30/linkedin_jobs_report.md
+  #   output/2026-04/01_04-00/linkedin_jobs_report.md
+  #
+  # This lets you compare reports month-over-month or day-over-day
+  # without any run ever overwriting a previous one.
+  # Set to false to always save into the base output/ folder.
+  timestamped_output: true
+
   report_filename: "linkedin_jobs_report.md"
   json_filename: "jobs_data.json"
   csv_filename: "jobs_data.csv"

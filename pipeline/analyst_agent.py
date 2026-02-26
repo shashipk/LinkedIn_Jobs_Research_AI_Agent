@@ -453,6 +453,15 @@ def run_analyst(batch: ParsedJobBatch, config: Dict[str, Any]) -> AnalysisResult
     work_dist: Counter = Counter(j.work_type.value for j in jobs)
     emp_dist: Counter = Counter(j.employment_type.value for j in jobs)
 
+    # ── AI/ML mention rate by role
+    ai_mention_by_role: Dict[str, float] = {}
+    for category, cat_jobs in by_category.items():
+        total_c = len(cat_jobs)
+        ai_count = sum(1 for j in cat_jobs if j.has_ai_mention)
+        ai_mention_by_role[category] = round(ai_count / total_c * 100, 1) if total_c else 0.0
+
+    console.print(f"  AI/ML mention rates computed across {len(ai_mention_by_role)} role categories")
+
     # ── Top companies
     company_jobs: Dict[str, list] = defaultdict(list)
     for job in jobs:
@@ -506,6 +515,7 @@ def run_analyst(batch: ParsedJobBatch, config: Dict[str, Any]) -> AnalysisResult
         employment_type_distribution=dict(emp_dist),
         top_companies=top_companies,
         insights=insights,
+        ai_mention_by_role=ai_mention_by_role,
     )
 
     console.print(f"  [green]✓[/green] Analysis complete")

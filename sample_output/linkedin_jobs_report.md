@@ -1,10 +1,10 @@
-> 📌 **Sample Output** — This report was auto-generated on 2026-02-25 using **SerpAPI mode** with **2,465 real LinkedIn job postings** across the US and India. Clone the repo and run the agent to generate a fresh report with the latest data.
+> 📌 **Sample Output** — This report was auto-generated on 2026-02-26 using **SerpAPI mode** with **6,329 real LinkedIn job postings** across the US and India. Includes new AI/ML mention analysis across all role categories. Clone the repo and run the agent to generate a fresh report with the latest data.
 
 ---
 
 # LinkedIn Tech Jobs Demand Report
-> **Generated:** 2026-02-25 14:39 UTC  
-> **Total Jobs Analyzed:** 2,465  
+> **Generated:** 2026-02-26 04:47 UTC  
+> **Total Jobs Analyzed:** 6,329  
 > **Data Period:** Last 24 months  
 > **Regions:** United States · India · Global
 
@@ -18,19 +18,20 @@
 6. [Work Mode Distribution](#6-work-mode-distribution)
 7. [Top Hiring Companies](#7-top-hiring-companies)
 8. [Quarterly Trends](#8-quarterly-trends)
-9. [Observations & Insights](#9-observations--insights)
+9. [AI/ML Knowledge Expected by Role](#9-aiml-knowledge-expected-by-role)
+10. [Observations & Insights](#10-observations--insights)
 
 ---
 ## 1. Executive Summary
 
-This report analyzes **2,465 tech job postings** scraped from LinkedIn across the United States and India over the past 24 months.
+This report analyzes **6,329 tech job postings** scraped from LinkedIn across the United States and India over the past 24 months.
 
 **Key Highlights:**
 
-- The US tech job market comprises 58.1% of the total jobs, with 1,434 positions available compared to India's 1,031 jobs, indicating a stronger demand for tech talent in the US.
-- Software Engineers are the most sought-after role, with 209 total positions, of which 127 are in the US and 82 in India, highlighting the global demand for this skill set.
-- Remote work is more prevalent among Backend Engineers, with 54.6% of positions offering remote options, while Software Engineers have a remote work percentage of 36.4%.
-- Most in-demand role: **DevOps/Platform/SRE** (495 openings)
+- The US tech job market is significantly larger than India's, with 3,706 jobs compared to 2,623 jobs, accounting for approximately 58.5% and 41.5% of the total jobs, respectively.
+- Software Engineering roles dominate the job market, with 474 positions available, of which 280 are in the US and 194 in India, indicating a strong demand for this skill set in both regions.
+- Remote work is prevalent in the tech sector, with 33.5% of Software Engineer positions being remote in the US, while only 18.4% of Frontend Engineer roles are remote, suggesting varying preferences for work arrangements across different roles.
+- Most in-demand role: **Other** (1,488 openings)
 - Top skills: **Python**, **AWS**, **CI/CD**
 
 ---
@@ -40,10 +41,10 @@ This report analyzes **2,465 tech job postings** scraped from LinkedIn across th
 
 | Region | Job Count | % of Total |
 |--------|----------:|-----------:|
-| 🇺🇸 United States | 1,434 | 58.2% |
-| 🇮🇳 India | 1,031 | 41.8% |
+| 🇺🇸 United States | 3,706 | 58.6% |
+| 🇮🇳 India | 2,623 | 41.4% |
 | 🌍 Other | 0 | 0.0% |
-| **Total** | **2,465** | **100%** |
+| **Total** | **6,329** | **100%** |
 
 ---
 ## 3. Role Demand Breakdown
@@ -52,28 +53,30 @@ This report analyzes **2,465 tech job postings** scraped from LinkedIn across th
 
 | Role Category | Total | 🇺🇸 US | 🇮🇳 India | Other | Remote% | Hybrid% |
 |---------------|------:|------:|---------:|------:|--------:|--------:|
-| DevOps/Platform/SRE | 495 | 273 | 222 | 0 | 24.6% | 26.5% |
-| Engineering Manager/Tech Lead | 301 | 182 | 119 | 0 | 29.2% | 17.9% |
-| ML/AI Engineer | 262 | 152 | 110 | 0 | 30.5% | 23.7% |
-| Frontend Engineer | 243 | 171 | 72 | 0 | 26.7% | 20.2% |
-| Full Stack Engineer | 229 | 98 | 131 | 0 | 36.7% | 16.6% |
-| Backend Engineer | 229 | 128 | 101 | 0 | 54.6% | 19.2% |
-| Data Scientist | 214 | 146 | 68 | 0 | 23.4% | 24.3% |
-| Software Engineer | 209 | 127 | 82 | 0 | 36.4% | 23.4% |
-| Data Engineer | 193 | 117 | 76 | 0 | 32.6% | 22.8% |
-| Other | 90 | 40 | 50 | 0 | 18.9% | 16.7% |
+| Other | 1,488 | 857 | 631 | 0 | 19.7% | 22.5% |
+| DevOps/Platform/SRE | 927 | 519 | 408 | 0 | 21.6% | 26.8% |
+| ML/AI Engineer | 796 | 470 | 326 | 0 | 28.9% | 21.7% |
+| Software Engineer | 474 | 280 | 194 | 0 | 33.5% | 23.2% |
+| Forward Deployed Engineer | 466 | 351 | 115 | 0 | 23.8% | 20.4% |
+| Engineering Manager/Tech Lead | 418 | 261 | 157 | 0 | 23.4% | 19.4% |
+| Product/Program Management | 405 | 252 | 153 | 0 | 21.2% | 16.8% |
+| Frontend Engineer | 326 | 124 | 202 | 0 | 18.4% | 17.2% |
+| Backend Engineer | 298 | 153 | 145 | 0 | 49.3% | 21.8% |
+| Full Stack Engineer | 290 | 186 | 104 | 0 | 25.9% | 24.1% |
+| Data Scientist | 244 | 149 | 95 | 0 | 25.0% | 22.5% |
+| Data Engineer | 197 | 104 | 93 | 0 | 31.5% | 23.4% |
 
 ### Top Skills Per Role
 
-**DevOps/Platform/SRE:** `CI/CD` · `Python` · `AWS` · `Kubernetes` · `Terraform` · `Azure` · `Docker` · `Ansible`
+**Other:** `Python` · `AWS` · `Agile` · `Azure` · `CI/CD` · `Java` · `SOLID` · `Go`
 
-**Engineering Manager/Tech Lead:** `AWS` · `Agile` · `CI/CD` · `Azure` · `Python` · `Java` · `Go` · `SOLID`
+**DevOps/Platform/SRE:** `Python` · `CI/CD` · `AWS` · `Terraform` · `Kubernetes` · `Azure` · `Docker` · `Linux`
 
-**ML/AI Engineer:** `Python` · `Machine Learning` · `PyTorch` · `AWS` · `TensorFlow` · `LLM` · `Azure` · `RAG`
+**ML/AI Engineer:** `Python` · `Machine Learning` · `LLM` · `AWS` · `MLOps` · `CI/CD` · `Azure` · `PyTorch`
 
-**Frontend Engineer:** `React` · `TypeScript` · `JavaScript` · `CSS` · `HTML` · `Agile` · `Git` · `CI/CD`
+**Software Engineer:** `Python` · `Java` · `Agile` · `CI/CD` · `AWS` · `SOLID` · `React` · `Kubernetes`
 
-**Full Stack Engineer:** `React` · `JavaScript` · `AWS` · `Java` · `Agile` · `TypeScript` · `CI/CD` · `Python`
+**Forward Deployed Engineer:** `Python` · `AWS` · `Azure` · `Go` · `GCP` · `JavaScript` · `Java` · `CI/CD`
 
 
 ---
@@ -83,26 +86,26 @@ This report analyzes **2,465 tech job postings** scraped from LinkedIn across th
 
 | Rank | Skill | Mentions | % of Jobs | Top Role Categories |
 |-----:|-------|--------:|---------:|---------------------|
-| 1 | **Python** | 1,228 | 49.8% | DevOps/Platform/SRE, ML/AI Engineer |
-| 2 | **AWS** | 932 | 37.8% | DevOps/Platform/SRE, Backend Engineer |
-| 3 | **CI/CD** | 818 | 33.2% | DevOps/Platform/SRE, Full Stack Engineer |
-| 4 | **Azure** | 678 | 27.5% | DevOps/Platform/SRE, Data Engineer |
-| 5 | **Kubernetes** | 603 | 24.5% | DevOps/Platform/SRE, Backend Engineer |
-| 6 | **Agile** | 587 | 23.8% | DevOps/Platform/SRE, Full Stack Engineer |
-| 7 | **Java** | 573 | 23.2% | Backend Engineer, Full Stack Engineer |
-| 8 | **Machine Learning** | 519 | 21.1% | ML/AI Engineer, Data Scientist |
-| 9 | **Docker** | 511 | 20.7% | DevOps/Platform/SRE, Full Stack Engineer |
-| 10 | **React** | 476 | 19.3% | Frontend Engineer, Full Stack Engineer |
-| 11 | **GCP** | 438 | 17.8% | DevOps/Platform/SRE, ML/AI Engineer |
-| 12 | **SOLID** | 419 | 17.0% | DevOps/Platform/SRE, Full Stack Engineer |
-| 13 | **Terraform** | 410 | 16.6% | DevOps/Platform/SRE, Data Engineer |
-| 14 | **JavaScript** | 393 | 15.9% | Frontend Engineer, Full Stack Engineer |
-| 15 | **Go** | 370 | 15.0% | DevOps/Platform/SRE, Backend Engineer |
-| 16 | **Git** | 357 | 14.5% | DevOps/Platform/SRE, Full Stack Engineer |
-| 17 | **TypeScript** | 349 | 14.2% | Frontend Engineer, Full Stack Engineer |
-| 18 | **Microservices** | 316 | 12.8% | Backend Engineer, Full Stack Engineer |
-| 19 | **Distributed Systems** | 310 | 12.6% | Backend Engineer, DevOps/Platform/SRE |
-| 20 | **REST** | 288 | 11.7% | Full Stack Engineer, Frontend Engineer |
+| 1 | **Python** | 2,556 | 40.4% | ML/AI Engineer, DevOps/Platform/SRE |
+| 2 | **AWS** | 2,055 | 32.5% | DevOps/Platform/SRE, Other |
+| 3 | **CI/CD** | 1,750 | 27.7% | DevOps/Platform/SRE, Other |
+| 4 | **Azure** | 1,557 | 24.6% | DevOps/Platform/SRE, Other |
+| 5 | **Agile** | 1,386 | 21.9% | Other, DevOps/Platform/SRE |
+| 6 | **Kubernetes** | 1,225 | 19.4% | DevOps/Platform/SRE, ML/AI Engineer |
+| 7 | **Java** | 1,116 | 17.6% | Other, Software Engineer |
+| 8 | **Docker** | 1,023 | 16.2% | DevOps/Platform/SRE, ML/AI Engineer |
+| 9 | **Machine Learning** | 986 | 15.6% | ML/AI Engineer, Data Scientist |
+| 10 | **GCP** | 978 | 15.5% | DevOps/Platform/SRE, ML/AI Engineer |
+| 11 | **SOLID** | 951 | 15.0% | Other, DevOps/Platform/SRE |
+| 12 | **Go** | 870 | 13.7% | DevOps/Platform/SRE, Other |
+| 13 | **Terraform** | 825 | 13.0% | DevOps/Platform/SRE, ML/AI Engineer |
+| 14 | **JavaScript** | 768 | 12.1% | Frontend Engineer, Full Stack Engineer |
+| 15 | **React** | 738 | 11.7% | Frontend Engineer, Full Stack Engineer |
+| 16 | **Git** | 734 | 11.6% | DevOps/Platform/SRE, Other |
+| 17 | **Linux** | 711 | 11.2% | DevOps/Platform/SRE, Other |
+| 18 | **LLM** | 653 | 10.3% | ML/AI Engineer, Other |
+| 19 | **REST** | 652 | 10.3% | Other, Software Engineer |
+| 20 | **Microservices** | 582 | 9.2% | Backend Engineer, DevOps/Platform/SRE |
 
 ---
 ## 5. Experience Level Distribution
@@ -111,13 +114,13 @@ This report analyzes **2,465 tech job postings** scraped from LinkedIn across th
 
 | Experience Level | Count | % |
 |------------------|------:|--:|
-| Senior | 752 | 30.5% |
-| Not Specified | 652 | 26.5% |
-| Manager | 596 | 24.2% |
-| Entry | 275 | 11.2% |
-| Principal | 73 | 3.0% |
-| Mid | 73 | 3.0% |
-| Staff | 44 | 1.8% |
+| Senior | 1,951 | 30.8% |
+| Not Specified | 1,762 | 27.8% |
+| Manager | 1,485 | 23.5% |
+| Entry | 598 | 9.4% |
+| Mid | 197 | 3.1% |
+| Principal | 190 | 3.0% |
+| Staff | 146 | 2.3% |
 
 ---
 ## 6. Work Mode Distribution
@@ -126,45 +129,45 @@ This report analyzes **2,465 tech job postings** scraped from LinkedIn across th
 
 | Work Mode | Count | % |
 |-----------|------:|--:|
-| Not Specified | 1,028 | 41.7% |
-| Remote | 770 | 31.2% |
-| Hybrid | 538 | 21.8% |
-| Onsite | 129 | 5.2% |
+| Not Specified | 2,991 | 47.3% |
+| Remote | 1,582 | 25.0% |
+| Hybrid | 1,402 | 22.2% |
+| Onsite | 354 | 5.6% |
 
 **Employment Type Breakdown:**
 
 | Employment Type | Count | % |
 |-----------------|------:|--:|
-| Full-time | 2,318 | 94.0% |
-| Contract | 91 | 3.7% |
-| Part-time | 33 | 1.3% |
-| Internship | 23 | 0.9% |
+| Full-time | 5,969 | 94.3% |
+| Contract | 268 | 4.2% |
+| Part-time | 54 | 0.9% |
+| Internship | 38 | 0.6% |
 
 ---
 ## 7. Top Hiring Companies
 
 | Rank | Company | Open Roles | Remote | Key Role Types |
 |-----:|---------|----------:|-------:|----------------|
-| 1 | **Uber** | 29 | 28 | Other, Full Stack Engineer, ML/AI Engineer |
-| 2 | **Apple** | 29 | 14 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 3 | **Cisco** | 22 | 13 | Full Stack Engineer, ML/AI Engineer, DevOps/Platform/SRE |
-| 4 | **VirtualVocations** | 21 | 5 | Full Stack Engineer, ML/AI Engineer, Frontend Engineer |
-| 5 | **Uplers** | 18 | 10 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 6 | **Google** | 16 | 7 | ML/AI Engineer, DevOps/Platform/SRE, Data Scientist |
-| 7 | **S&P Global** | 16 | 7 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 8 | **Adobe** | 15 | 5 | Other, Full Stack Engineer, ML/AI Engineer |
-| 9 | **Barclays** | 14 | 3 | Full Stack Engineer, ML/AI Engineer, Frontend Engineer |
-| 10 | **Oracle** | 14 | 7 | DevOps/Platform/SRE, ML/AI Engineer, Data Engineer |
-| 11 | **Salesforce, Inc.** | 13 | 3 | Full Stack Engineer, Data Scientist, DevOps/Platform/SRE |
-| 12 | **Robert Half** | 13 | 3 | Full Stack Engineer, ML/AI Engineer, DevOps/Platform/SRE |
-| 13 | **Cosmoquick** | 12 | 0 | DevOps/Platform/SRE, Frontend Engineer |
-| 14 | **Expedia Group** | 12 | 7 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 15 | **Mastercard** | 11 | 4 | Full Stack Engineer, Data Scientist, DevOps/Platform/SRE |
-| 16 | **eBay** | 11 | 7 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 17 | **Wells Fargo** | 10 | 2 | Full Stack Engineer, DevOps/Platform/SRE, Software Engineer |
-| 18 | **Capital One** | 10 | 1 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 19 | **JPMC Candidate Experience page** | 10 | 0 | Full Stack Engineer, ML/AI Engineer, Data Scientist |
-| 20 | **Equifax** | 10 | 3 | Software Engineer, Full Stack Engineer, DevOps/Platform/SRE |
+| 1 | **VirtualVocations** | 73 | 7 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 2 | **Google** | 61 | 16 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 3 | **Oracle** | 56 | 21 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 4 | **Apple** | 52 | 18 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 5 | **Uplers** | 51 | 26 | Engineering Manager/Tech Lead, Data Scientist, ML/AI Engineer |
+| 6 | **Uber** | 48 | 44 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 7 | **Cisco** | 46 | 21 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 8 | **Qualcomm** | 42 | 5 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 9 | **Salesforce, Inc.** | 37 | 8 | Software Engineer, Data Scientist, ML/AI Engineer |
+| 10 | **Adobe** | 36 | 11 | Engineering Manager/Tech Lead, Software Engineer, ML/AI Engineer |
+| 11 | **Accenture** | 33 | 6 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 12 | **Wells Fargo** | 30 | 4 | Engineering Manager/Tech Lead, Software Engineer, ML/AI Engineer |
+| 13 | **Energy Jobline ZR** | 30 | 6 | Engineering Manager/Tech Lead, Product/Program Management, Frontend Engineer |
+| 14 | **Amazon** | 30 | 3 | Software Engineer, Data Scientist, ML/AI Engineer |
+| 15 | **JPMC Candidate Experience page** | 26 | 5 | Software Engineer, Data Scientist, ML/AI Engineer |
+| 16 | **Cognizant** | 26 | 13 | Engineering Manager/Tech Lead, Data Scientist, ML/AI Engineer |
+| 17 | **HPE** | 25 | 6 | Software Engineer, ML/AI Engineer, Full Stack Engineer |
+| 18 | **Jobs via Dice** | 24 | 5 | Engineering Manager/Tech Lead, Software Engineer, Data Scientist |
+| 19 | **Capital One** | 23 | 6 | Software Engineer, Data Scientist, ML/AI Engineer |
+| 20 | **Cosmoquick** | 20 | 3 | ML/AI Engineer, Frontend Engineer, DevOps/Platform/SRE |
 
 ---
 ## 8. Quarterly Trends
@@ -173,26 +176,52 @@ This report analyzes **2,465 tech job postings** scraped from LinkedIn across th
 
 
 ---
-## 9. Observations & Insights
+## 9. AI/ML Knowledge Expected by Role
 
-**1.** The US tech job market comprises 58.1% of the total jobs, with 1,434 positions available compared to India's 1,031 jobs, indicating a stronger demand for tech talent in the US.
+> Which roles are expecting AI/ML knowledge — even outside core AI/ML job titles?
 
-**2.** Software Engineers are the most sought-after role, with 209 total positions, of which 127 are in the US and 82 in India, highlighting the global demand for this skill set.
+![ai_mention_by_role.png](charts/ai_mention_by_role.png)
 
-**3.** Remote work is more prevalent among Backend Engineers, with 54.6% of positions offering remote options, while Software Engineers have a remote work percentage of 36.4%.
+| Role Category | Jobs Analyzed | AI/ML Mentions | % Adoption |
+|---------------|----------:|----------:|----------:|
+| ML/AI Engineer | 796 | ~780 | 🟩🟩🟩🟩🟩🟩🟩🟩🟩 98.0% |
+| Data Scientist | 244 | ~195 | 🟩🟩🟩🟩🟩🟩🟩 79.9% |
+| Data Engineer | 197 | ~114 | 🟩🟩🟩🟩🟩 57.9% |
+| Product/Program Management | 405 | ~228 | 🟩🟩🟩🟩🟩 56.3% |
+| Backend Engineer | 298 | ~159 | 🟩🟩🟩🟩🟩 53.4% |
+| Full Stack Engineer | 290 | ~148 | 🟩🟩🟩🟩🟩 51.0% |
+| Software Engineer | 474 | ~232 | 🟩🟩🟩🟩 48.9% |
+| Forward Deployed Engineer | 466 | ~208 | 🟩🟩🟩🟩 44.6% |
+| Other | 1,488 | ~619 | 🟩🟩🟩🟩 41.6% |
+| Frontend Engineer | 326 | ~119 | 🟩🟩🟩 36.5% |
+| Engineering Manager/Tech Lead | 418 | ~151 | 🟩🟩🟩 36.1% |
+| DevOps/Platform/SRE | 927 | ~325 | 🟩🟩🟩 35.1% |
 
-**4.** In India, Full Stack Engineers are in higher demand (131 positions) compared to their US counterparts (98 positions), suggesting a growing emphasis on full-stack development skills in the Indian market.
+> 💡 **ML/AI Engineer** has the highest AI/ML adoption signal at **98.0%** of job postings — meaning employers already expect AI familiarity even in this role.
 
-**5.** The top skills across various roles include Python (49.8% of total jobs), AWS (37.8%), and CI/CD (33.2%), indicating a strong preference for cloud and automation skills in both markets.
+**Keywords detected:** `AI` · `ML` · `LLM` · `GenAI` · `Generative AI` · `Machine Learning` · `Deep Learning` · `Neural Network` · `RAG` · `Agents` · `AI Agents` · `Foundation Model` · `Prompt` · `Vector Database` · `Embeddings`
 
-**6.** Engineering Manager/Tech Lead roles show a significant presence with 301 total positions, split between 182 in the US and 119 in India, reflecting the need for leadership in tech projects.
+---
+## 10. Observations & Insights
 
-**7.** Data roles are also prominent, with Data Engineers having 193 positions available, where the US leads with 117 jobs compared to 76 in India, emphasizing the importance of data management skills.
+**1.** The US tech job market is significantly larger than India's, with 3,706 jobs compared to 2,623 jobs, accounting for approximately 58.5% and 41.5% of the total jobs, respectively.
 
-**8.** The experience distribution shows that 752 positions are targeted at Senior-level candidates, indicating a preference for experienced professionals in the tech job market.
+**2.** Software Engineering roles dominate the job market, with 474 positions available, of which 280 are in the US and 194 in India, indicating a strong demand for this skill set in both regions.
+
+**3.** Remote work is prevalent in the tech sector, with 33.5% of Software Engineer positions being remote in the US, while only 18.4% of Frontend Engineer roles are remote, suggesting varying preferences for work arrangements across different roles.
+
+**4.** Python is the most sought-after skill, appearing in 40.4% of job postings, particularly in roles like ML/AI Engineer and DevOps/Platform/SRE, highlighting its critical importance in the tech landscape.
+
+**5.** The average experience level for most roles is 'Mid,' with 1,485 managerial positions available, indicating a healthy demand for experienced professionals in leadership roles.
+
+**6.** Data Engineering roles are nearly evenly split between the US and India, with 104 jobs in the US and 93 in India, reflecting a balanced demand for data skills in both markets.
+
+**7.** The Backend Engineer category shows a high remote work percentage of 49.3%, suggesting a growing trend towards flexibility in backend development roles.
+
+**8.** With 927 positions, DevOps/Platform/SRE roles are crucial in the tech job market, comprising 14.6% of total jobs and emphasizing the importance of cloud and infrastructure skills like AWS and Kubernetes.
 
 
 ---
 
-*Report generated by LinkedIn Jobs Research AI Agent on 2026-02-25 14:39 UTC*
+*Report generated by LinkedIn Jobs Research AI Agent on 2026-02-26 04:47 UTC*
 *Data sourced from LinkedIn public job listings.*

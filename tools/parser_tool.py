@@ -65,14 +65,79 @@ SKILL_KEYWORDS = {
 SKILL_PATTERNS = {s.lower(): s for s in SKILL_KEYWORDS}
 
 # ─────────────────────────────────────────────
+# AI/ML MENTION DETECTION
+# ─────────────────────────────────────────────
+
+# Keywords to detect AI/ML expectations in any job description or title.
+# Ordered from most specific to most general to reduce false positives.
+AI_ML_KEYWORDS: List[str] = [
+    "ai agents", "ai agent",          # most specific first
+    "generative ai", "genai",
+    "foundation model", "foundation models",
+    "vector database", "vector db",
+    "neural network", "neural networks",
+    "deep learning",
+    "machine learning",
+    "large language model",
+    "ai infrastructure", "ai infra",
+    "embeddings",
+    "fine-tuning", "finetuning",
+    "agents",                          # broad — checked after "ai agents"
+    "prompt",
+    "rag",
+    "llm",
+    "nlp",
+    "ml",
+    "ai",                              # shortest/broadest — checked last
+]
+
+
+def _detect_ai_mentions(text: str) -> Tuple[bool, List[str]]:
+    """
+    Scan job title + description for AI/ML keywords.
+
+    Returns:
+        (has_mention, keywords_found) — e.g. (True, ["LLM", "RAG", "embeddings"])
+    """
+    if not text:
+        return False, []
+
+    text_lower = text.lower()
+    found: List[str] = []
+    seen_lower: set = set()
+
+    for keyword in AI_ML_KEYWORDS:
+        kw_lower = keyword.lower()
+        if kw_lower in seen_lower:
+            continue
+        # Word-boundary check for short abbreviations (AI, ML, NLP, RAG, LLM)
+        # to avoid matching "email", "small", "normal", etc.
+        if len(keyword) <= 4:
+            pattern = r'\b' + re.escape(kw_lower) + r'\b'
+            if re.search(pattern, text_lower):
+                found.append(keyword.upper() if keyword.isupper() or len(keyword) <= 4 else keyword.title())
+                seen_lower.add(kw_lower)
+        else:
+            if kw_lower in text_lower:
+                found.append(keyword.title() if not keyword[0].isupper() else keyword)
+                seen_lower.add(kw_lower)
+
+    return (len(found) > 0), found
+
+
+# ─────────────────────────────────────────────
 # ROLE CATEGORY MAPPING
 # ─────────────────────────────────────────────
 
 ROLE_CATEGORY_KEYWORDS: Dict[RoleCategory, List[str]] = {
     RoleCategory.ML_AI: [
         "machine learning", "ml engineer", "ai engineer", "deep learning",
-        "data science", "nlp engineer", "computer vision", "mlops",
-        "research scientist", "applied scientist", "llm", "generative ai",
+        "data science", "nlp engineer", "computer vision",
+        "research scientist", "applied scientist", "generative ai",
+        # New AI-native roles — classified under ML/AI
+        "llm engineer", "llm", "prompt engineer", "mlops engineer", "mlops",
+        "ai infrastructure", "ai infra", "foundation model",
+        "multimodal", "rag engineer", "ai platform engineer",
     ],
     RoleCategory.DATA_ENGINEER: [
         "data engineer", "etl", "data pipeline", "data platform",
@@ -109,6 +174,21 @@ ROLE_CATEGORY_KEYWORDS: Dict[RoleCategory, List[str]] = {
     RoleCategory.SOFTWARE_ENGINEER: [
         "software engineer", "software developer", "swe",
         "software development engineer", "sde",
+    ],
+    # ── New role categories ──────────────────────────────────────────
+    RoleCategory.FORWARD_DEPLOYED_ENGINEER: [
+        "forward deployed engineer", "fde", "field engineer",
+        "solutions engineer", "customer solutions engineer",
+        "field development engineer", "implementation engineer",
+        "professional services engineer", "customer engineer",
+        "sales engineer", "pre-sales engineer",
+    ],
+    RoleCategory.PRODUCT_PROGRAM_MANAGEMENT: [
+        "product manager", "ai pm", "ai product manager",
+        "technical product manager", "tech pm",
+        "technical program manager", "tech program manager", "tpm",
+        "program manager", "it program manager",
+        "product lead", "group product manager", "senior product manager",
     ],
 }
 
@@ -630,6 +710,7 @@ def _serpapi_item_to_job(
     city, country = _parse_location(loc_raw)
     date_posted = _parse_relative_date(posted_raw)
     skills      = extract_skills(desc + " " + title)
+    has_ai, ai_kws = _detect_ai_mentions(title + " " + desc)
 
     return JobPosting(
         job_id=job_id,
@@ -650,4 +731,6 @@ def _serpapi_item_to_job(
         source_url=source_url,
         search_query=query,
         search_location=location,
+        has_ai_mention=has_ai,
+        ai_keywords_found=ai_kws,
     )
