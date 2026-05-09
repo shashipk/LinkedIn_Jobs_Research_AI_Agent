@@ -52,19 +52,19 @@ search:
   # Add or remove roles to focus your research.
   roles:
     # Software Engineering
-    - "Software Engineer"
-    - "Backend Engineer"
-    - "Frontend Engineer"
-    - "Full Stack Engineer"
-    - "Staff Engineer"
-    - "iOS Engineer"
-    - "Android Engineer"
+    # "Software Engineer"
+    # "Backend Engineer"
+    # "Frontend Engineer"
+    # "Full Stack Engineer"
+    # "Staff Engineer"
+    # "iOS Engineer"
+    # "Android Engineer"
 
     # AI / Data (core)
-    - "Machine Learning Engineer"
-    - "AI Engineer"
-    - "Data Engineer"
-    - "Data Scientist"
+    # "Machine Learning Engineer"
+    # "AI Engineer"
+    # "Data Engineer"
+    # "Data Scientist"
 
     # AI / Data (new & emerging)
     - "LLM Engineer"
@@ -73,22 +73,22 @@ search:
     - "AI Infrastructure Engineer"
 
     # Infrastructure / Cloud
-    - "DevOps Engineer"
-    - "Platform Engineer"
-    - "Site Reliability Engineer"
-    - "Cloud Engineer"
-    - "Infrastructure Engineer"
+    # "DevOps Engineer"
+    # "Platform Engineer"
+    #"Site Reliability Engineer"
+    # "Cloud Engineer"
+    # "Infrastructure Engineer"
 
     # Security
-    - "Security Engineer"
+    # "Security Engineer"
 
     # Architecture & Leadership
     - "Solutions Architect"
-    - "Engineering Manager"
-    - "Tech Lead"
+    # "Engineering Manager"
+    # "Tech Lead"
 
     # Quality
-    - "QA Engineer"
+    # "QA Engineer"
 
     # Field / Customer-Facing Engineering (FDE family)
     - "Forward Deployed Engineer"
@@ -96,9 +96,9 @@ search:
     - "Field Engineer"
 
     # Product & Program Management
-    - "AI Product Manager"
-    - "Technical Product Manager"
-    - "Technical Program Manager"
+    # "AI Product Manager"
+    # "Technical Product Manager"
+    # "Technical Program Manager"
 
   # ── LOCATIONS ────────────────────────────────────────────────────────
   # 13 high-value city-level locations: 7 US + 6 India.
